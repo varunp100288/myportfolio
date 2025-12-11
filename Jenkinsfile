@@ -2,11 +2,10 @@ pipeline {
     agent any
 
     tools {
-        nodejs "node18"
+        nodejs 'node18'
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -15,19 +14,19 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Build App') {
             steps {
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t my-vite-app:latest .'
+                bat 'docker build -t my-vite-app:latest .'
             }
         }
     }
